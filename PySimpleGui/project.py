@@ -14,23 +14,20 @@ def TelaInicial():
     ]
 
     window = sg.Window('Tela Inicial', layout)
-
     return window
-
     
 
 def TelaCadastro():
     sg.Text('CADASTRO DE PESSOA') 
 
     layout = [
-        [sg.Text('CPF:'),sg.Input( key='CPF', size=(20, 1)), sg.Text('Nome:'), sg.Input(key='Nome' , size=(30, 1))],
+        [sg.Text('CPF:'),sg.Input( key='CPF', size=(20, 1)), sg.Text('Nome:'), sg.Input(key='Nome' , size=(40, 1))],
         [sg.Text('Endereço:'), sg.Input(key='Endereço', expand_x=True)],
         [sg.Text('Cidade:'), sg.Input(key='Cidade', size=(35,1)), sg.Text('Estado'), sg.Combo(['SP', 'RJ', 'MG', 'ES'], key='Estado', size=(20,1))],
 
         [sg.Frame('Sexo',
                   [[sg.Radio('Masculino', 'sexo', key='Masculino'),
                     sg.Radio('Feminino', 'sexo', key='Feminino'),]])],
-
 
         [sg.Text('E-mail', key='E-mail'), sg.Input(key='E-mail', size=(35,1)), sg.Text('Data de Nascimento:'), sg.Input(key='Data de Nascimento', size=(10,1))],        
 
@@ -42,12 +39,10 @@ def TelaCadastro():
             justification='center',
             vertical_alignment='center',
             k='-COL-'
-    )]
-
+        )]
     ]
     
     window2 = sg.Window('Cadastro de Pessoa', layout)
-
     return window2
 
 while True:
