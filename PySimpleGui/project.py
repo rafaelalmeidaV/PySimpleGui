@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import sqlite3
 
 sg.theme('Reddit')
 
@@ -7,12 +8,10 @@ def TelaInicial():
     menu_layout = [['Pessoa', ['Cadastrar', 'Editar']],
                    ['Ajuda', ['Sobre']],
                    ]
-
     layout = [
         [sg.Image(src_image)],
         [sg.Menu(menu_layout)]
     ]
-
     window = sg.Window('Tela Inicial', layout)
     return window
     
@@ -21,7 +20,8 @@ def TelaCadastro():
     sg.Text('CADASTRO DE PESSOA') 
 
     layout = [
-        [sg.Text('CPF:'),sg.Input( key='CPF', size=(20, 1)), sg.Text('Nome:'), sg.Input(key='Nome' , size=(40, 1))],
+        [sg.Text('CPF:'),sg.Input( key='CPF', size=(20, 1)), 
+         sg.Text('Nome:'), sg.Input(key='Nome' , size=(40, 1))],
         [sg.Text('Endereço:'), sg.Input(key='Endereço', expand_x=True)],
         [sg.Text('Cidade:'), sg.Input(key='Cidade', size=(35,1)), sg.Text('Estado'), sg.Combo(['SP', 'RJ', 'MG', 'ES'], key='Estado', size=(20,1))],
 
@@ -53,16 +53,13 @@ while True:
 
     if event == sg.WIN_CLOSED:
         break
-
     if event == 'Cadastrar':
         window.close()
         window2 = TelaCadastro()
-        event, values = window2.read()
-        
+        event, values = window2.read()     
 
         if event == sg.WIN_CLOSED:
             break
-
         if event == 'Cadastrar':
             sg.popup('Usuário cadastrado com sucesso!')
             window2.close()
