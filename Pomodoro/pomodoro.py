@@ -3,7 +3,7 @@ import threading
 import time
 import pygame
 
-sg.theme('Reds')
+sg.theme('Topanga')
 
 def start_pomodoro():
     global paused
@@ -39,12 +39,17 @@ def resume_pomodoro():
 src_Image = r'Pomodoro\img\pomodoro.png'
 
 
-layout = [
+layout = [ 
+    
     [sg.Image(src_Image)],
-    [sg.Text('Pomodoro', font=('Helvetica', 26))],
-    [sg.Text('00:00', key='-OUTPUT-', font=('Helvetica', 48))],
-    [sg.Button('Iniciar', size=(10, 2)), sg.Button('Pausar', size=(10, 2)), sg.Button('Retomar', size=(10, 2))],
-
+    [sg.Text(size=(20, 1))],
+    [sg.Column([
+        [sg.Text('Pomodoro', font=('Helvetica', 26), justification='center')],
+        [sg.Text('00:00', key='-OUTPUT-', font=('Helvetica', 48), justification='center')],
+        [sg.Button('Iniciar', size=(10, 2)), sg.Button('Pausar', size=(10, 2)), sg.Button('Retomar', size=(10, 2))]
+    ], element_justification='center')], 
+    [sg.Text(size=(20, 1))],
+    
 ]
 
 window = sg.Window('Pomodoro', layout)
